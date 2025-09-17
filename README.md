@@ -1,4 +1,4 @@
-# Real Estate Property Listing Platform (React)
+# Real Estate Property Listing
 
 ## Overview
 This project is a **frontend-focused React application** for browsing, filtering, and exploring real estate properties. Users can search for properties, view detailed information, interact with maps, 
