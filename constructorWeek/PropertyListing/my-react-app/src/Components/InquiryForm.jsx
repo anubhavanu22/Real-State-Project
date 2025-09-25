@@ -1,7 +1,8 @@
 
+// src/components/InquiryForm.jsx
 import { useState } from "react";
-
-export function InquiryForm({ propertyTitle }) {
+import "../app.css";
+ function InquiryForm({ propertyTitle }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,44 +12,31 @@ export function InquiryForm({ propertyTitle }) {
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const validate = () => {
-    const { name, email, phone, message } = formData;
-    if (!name || !email || !phone || !message) return false;
-    if (!email.includes("@") || phone.length < 10) return false;
-    return true;
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validate()) {
-      alert("Please fill all fields correctly.");
-      return;
-    }
     setSubmitted(true);
-    
-    console.log("Form submitted:", formData);
+    console.log("Inquiry:", formData);
   };
 
   if (submitted) {
     return (
-      <div style={{ marginTop: "20px", color: "green" }}>
-        ✅ Thank you for your inquiry about <b>{propertyTitle}</b>!
-      </div>
+      <p style={{ color: "green" }}>
+        ✅ Thanks for your inquiry about <b>{propertyTitle}</b>!
+      </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
-      <h3>📩 Inquire About This Property</h3>
+    <form onSubmit={handleSubmit}>
+      <h4>📩 Inquire about this property</h4>
       <input
         type="text"
         name="name"
-        value={formData.name}
         placeholder="Your Name"
+        value={formData.name}
         onChange={handleChange}
         required
       />
@@ -56,8 +44,8 @@ export function InquiryForm({ propertyTitle }) {
       <input
         type="email"
         name="email"
-        value={formData.email}
         placeholder="Your Email"
+        value={formData.email}
         onChange={handleChange}
         required
       />
@@ -65,21 +53,22 @@ export function InquiryForm({ propertyTitle }) {
       <input
         type="tel"
         name="phone"
+        placeholder="Your Phone"
         value={formData.phone}
-        placeholder="Your Phone Number"
         onChange={handleChange}
         required
       />
       <br />
       <textarea
         name="message"
+        placeholder="Message"
         value={formData.message}
-        placeholder="Your Message"
         onChange={handleChange}
         required
       />
       <br />
-      <button type="submit">Send Inquiry</button>
+      <button type="submit">Send</button>
     </form>
   );
 }
+export default InquiryForm

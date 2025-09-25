@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 //import { PropertyCard } from "./Components/PropertyCard"; 
-import { PropertyCard } from "./PropertyCard";
-
+import { PropertyCard } from "./components/PropertyCard";
+import "../app.css";
 export function Product() {
   const [product, setProduct] = useState([]);
   const [property, setProperty] = useState("All");

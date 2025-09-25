@@ -1,25 +1,54 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Product } from "./Components/Product";
-import { ProductDetail } from "./Components/ProductDetail";
-import { Favorites } from "./Components/Favorites";
-import { Link } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+//import Navbar from "./components/Navbar";
+
+import Home from "./pages/Home";
+//import PropertyDetail from "./pages/PropertyDetail";
+import Favorites from "./pages/Favorites";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Navbar from "./Components/Navbar";
+import PropertyDetail from "./pages/ProductDetail";
 
 function App() {
   return (
-    <Router>
-    
-      <nav style={{ display: "flex", gap: "20px", padding: "10px", background: "#f0f0f0" }}>
-        <Link to="/">🏠 Home</Link>
-        <Link to="/favorites">💖 Favorites</Link>
-      </nav>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          {/* Protected routes */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/property/:id"
+            element={
+              <ProtectedRoute>
+                <PropertyDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <ProtectedRoute>
+                <Favorites />
+              </ProtectedRoute>
+            }
+          />
 
-    
-      <Routes>
-        <Route path="/" element={<Product />} />
-        <Route path="/property/:id" element={<ProductDetail />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Routes>
-    </Router>
+          {/* Public routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
