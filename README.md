@@ -1,7 +1,8 @@
-# Real Estate Property Listing 
+# Real Estate Property Listing
 
 ## Overview
-This project is a **frontend-focused React application** for browsing, filtering, and exploring real estate properties. Users can search for properties, view detailed information, interact with maps, save favorites, compare listings, and contact agents—all with a responsive and modern interface.  
+This project is a **frontend-focused React application** for browsing, filtering, and exploring real estate properties. Users can search for properties, view detailed information, interact with maps, 
+save favorites, compare listings, and contact agents—all with a responsive and modern interface.  
 
 The platform emphasizes **mobile-first design**, smooth interactions, and a user-friendly experience.
 
@@ -42,12 +43,9 @@ The platform emphasizes **mobile-first design**, smooth interactions, and a user
 - **Infinite Scroll or Load More Button:** Continuously browse listings without page reloads.
 - **Responsive Pagination Controls:** Navigate easily on all devices.
 
-
 ## Technologies Used
 - **React** (Functional Components, Hooks)
 - **React Router** for navigation
 - **CSS (Responsive & Modern UI with Gradients)**
 - **JavaScript (Dynamic Filtering, Favorites, Comparison)**
 - **Optional:** localStorage for favorites persistence
-
----
